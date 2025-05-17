@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Activate Your Account</title>
+</head>
+<body>
+    <h2>Welcome, {{ 'User'}}</h2>
+    <p>Click the button below to activate your account:</p>
+    
+    <a id="activate-button" href="{{ activation_link }}" 
+       style="display: inline-block; padding: 10px 20px; font-size: 16px; 
+       color: white; background-color: #007BFF; text-decoration: none; border-radius: 10px; cursor: pointer;"
+       onclick="disableButton(event)">
+        Activate Account
+    </a>
+
+    <script>
+        function disableButton(event) {
+            event.preventDefault(); // Stop default navigation
+            let button = event.target;
+            button.removeAttribute("href"); // Remove link
+            button.setAttribute("aria-disabled", "true"); // Accessibility
+            button.style.cursor = "not-allowed"; // Change cursor
+            button.style.opacity = "0.5"; // Grey out
+            button.innerText = "Your Account is Already Activated...";
+            button.onclick = null;
+        }
+    </script>
+
+    <p>If you didn't request this, please ignore this email.</p>
+</body>
+</html>
